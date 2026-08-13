@@ -1,14 +1,14 @@
 ---
 # Project information
-site_name: "Home Assistant Community Apps"
-site_url: "https://addons.community"
+site_name: "Luis Guerrero Home Assistant Apps"
+site_url: "https://github.com/guerrerotook/repository"
 site_description: "The primary goal of this project is to provide you (as a Home Assistant user) with additional, high quality, apps that allow you to take your automated home to the next level."
-site_author: "Franck Nijhof"
-copyright: "Copyright 2017-2026 - Franck Nijhof."
+site_author: "Luis Guerrero"
+copyright: "Copyright 2017-2026 - Luis Guerrero."
 
 # Repository
-repo_name: "hassio-addons"
-repo_url: "https://github.com/hassio-addons/repository"
+repo_name: "guerrerotook/repository"
+repo_url: "https://github.com/guerrerotook/repository"
 edit_uri: ""
 
 # Theme configuration
@@ -32,17 +32,7 @@ extra:
   manifest: "manifest.webmanifest"
   social:
     - icon: fontawesome/brands/github-alt
-      link: "https://github.com/hassio-addons"
-    - icon: fontawesome/brands/twitter
-      link: "https://twitter.com/hassioaddons"
-    - icon: fontawesome/brands/instagram
-      link: "https://instagram.com/frenck"
-    - icon: fontawesome/brands/twitch
-      link: "https://twitch.tv/frenck"
-    - icon: fontawesome/brands/youtube
-      link: "https://youtube.com/frenck"
-    - icon: fontawesome/brands/linkedin
-      link: "https://www.linkedin.com/in/frenck"
+      link: "https://github.com/guerrerotook"
 
 # Extensions
 markdown_extensions:
@@ -67,8 +57,6 @@ markdown_extensions:
 # The pages to serve
 nav:
   - "Our Apps": "index.md"
-  - "Beta Apps": "beta.md"
-  - "Edge Apps": "edge.md"
   - "Contributing": "contributing.md"
   - "Code of Conduct": "code-of-conduct.md"
   - "License": "license.md"
