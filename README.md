@@ -107,9 +107,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[addon-vaultwarden]: https://github.com/hassio-addons/app-vaultwarden/tree/0.27.0
-[addon-doc-vaultwarden]: https://github.com/hassio-addons/app-vaultwarden/blob/0.27.0/README.md
-[vaultwarden-issue]: https://github.com/hassio-addons/app-vaultwarden/issues
+[addon-vaultwarden]: https://github.com/guerrerotook/app-vaultwarden/tree/0.27.0
+[addon-doc-vaultwarden]: https://github.com/guerrerotook/app-vaultwarden/blob/0.27.0/README.md
+[vaultwarden-issue]: https://github.com/guerrerotook/app-vaultwarden/issues
 [vaultwarden-version-shield]: https://img.shields.io/badge/version-0.27.0-blue.svg
 [vaultwarden-aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [vaultwarden-amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg

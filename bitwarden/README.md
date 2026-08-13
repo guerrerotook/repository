@@ -40,6 +40,6 @@ email, bank, and other important accounts. USE A PASSWORD MANAGER!
 [patreon]: https://www.patreon.com/frenck
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
 [release-shield]: https://img.shields.io/badge/version-v0.27.0-blue.svg
-[release]: https://github.com/hassio-addons/app-vaultwarden/tree/v0.27.0
-[screenshot]: https://github.com/hassio-addons/app-vaultwarden/raw/main/images/screenshot.png
+[release]: https://github.com/guerrerotook/app-vaultwarden/tree/v0.27.0
+[screenshot]: https://github.com/guerrerotook/app-vaultwarden/raw/main/images/screenshot.png
 [vaultwarden]: https://github.com/dani-garcia/vaultwarden

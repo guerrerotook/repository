@@ -171,14 +171,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=a0d7b954_bitwarden&repository_url=https%3A%2F%2Fgithub.com%2Fhassio-addons%2Frepository
-[contributors]: https://github.com/hassio-addons/app-vaultwarden/graphs/contributors
+[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=bitwarden&repository_url=https%3A%2F%2Fgithub.com%2Fguerrerotook%2Frepository
+[contributors]: https://github.com/guerrerotook/app-vaultwarden/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord]: https://discord.me/hassioaddons
 [forum]: https://community.home-assistant.io/t/home-assistant-community-add-on-bitwarden-rs/115573?u=frenck
 [frenck]: https://github.com/frenck
-[issue]: https://github.com/hassio-addons/app-vaultwarden/issues
+[issue]: https://github.com/guerrerotook/app-vaultwarden/issues
 [reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/hassio-addons/app-vaultwarden/releases
+[releases]: https://github.com/guerrerotook/app-vaultwarden/releases
 [semver]: https://semver.org/spec/v2.0.0.html
 [vaultwarden]: https://github.com/dani-garcia/vaultwarden
