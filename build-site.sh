@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Community Hass.io Add-ons for Home Assistant
+# Luis Guerrero Home Assistant Apps
 # This script builds a small little website
 # ==============================================================================
 set -o errexit  # Exit script when a command exits with non-zero status
@@ -16,12 +16,6 @@ mkdir -p docs
 
 # Install requirements
 pip install -r requirements.txt
-
-# Download Beta page
-curl https://raw.githubusercontent.com/hassio-addons/repository-beta/master/README.md --output docs/beta.md
-
-# Download Edge page
-curl https://raw.githubusercontent.com/hassio-addons/repository-edge/master/README.md --output docs/edge.md
 
 # Get the pages into the docs folder
 ln -sf ../README.md docs/index.md
