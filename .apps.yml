@@ -2,6 +2,6 @@
 channel: stable
 apps:
   bitwarden:
-    repository: hassio-addons/app-vaultwarden
+    repository: guerrerotook/app-vaultwarden
     target: vaultwarden
-    image: ghcr.io/hassio-addons/bitwarden
+    image: ghcr.io/guerrerotook/bitwarden
