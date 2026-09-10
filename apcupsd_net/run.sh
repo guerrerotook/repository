@@ -44,13 +44,12 @@ for key in "${keys[@]}"; do
     val=$(jq --raw-output --arg k "$key" '.extra[] | select(.key == $k).val' $CONFIG_PATH | head -n1)
 
     if [ -n "$val" ]; then
-        # Escape sed replacement metacharacters (only needed when the value
-        # is used as a sed replacement string below, not for the plain
-        # append case)
-        val_escaped=$(printf '%s' "$val" | sed -e 's/[\/&]/\\&/g')
-
         if grep -xq "#\?$key\( .*\)\?" $UPS_CONFIG_PATH; then
-            # replace in config
+            # Replace in config. $val must be escaped here because it is
+            # placed inside a sed replacement string, where "/" and "&"
+            # are metacharacters. When appended verbatim below (not via
+            # sed), the raw, unescaped value is the correct one to write.
+            val_escaped=$(printf '%s' "$val" | sed -e 's/[\/&]/\\&/g')
             sed -i "s/^#\?$key\( .*\)\?\$/$key $val_escaped/g" $UPS_CONFIG_PATH
         else
             # add to bottom

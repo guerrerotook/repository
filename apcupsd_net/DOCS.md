@@ -36,9 +36,9 @@ type: net
 device: upshost:3551
 extra:
   - key: KILLDELAY
-    val: 10
+    val: "10"
   - key: NISPORT
-    val: 5555
+    val: "5555"
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -71,9 +71,9 @@ Allows overriding any other setting in `apcupsd.conf` using a list of
 ```yaml
 extra:
   - key: KILLDELAY
-    val: 10
+    val: "10"
   - key: NISPORT
-    val: 5555
+    val: "5555"
 ```
 
 For help with configuring apcupsd itself, see the
