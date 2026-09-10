@@ -26,7 +26,7 @@ fi
 if [[ -n "$DEVICE" ]]; then
     sed -i "s/^#\?DEVICE\( .*\)\?\$/DEVICE $DEVICE/g" $UPS_CONFIG_PATH
 else
-    sed -i "s/^#\?DEVICE\( .*\)\?\$//g" $UPS_CONFIG_PATH
+    sed -i "/^#\?DEVICE\( .*\)\?\$/d" $UPS_CONFIG_PATH
 fi
 
 keys=$(jq --raw-output '.extra[].key' $CONFIG_PATH | sort -u)
