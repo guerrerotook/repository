@@ -6,25 +6,31 @@ UPS_CONFIG_PATH=/etc/apcupsd/apcupsd.conf
 
 VALID_SCRIPTS=(annoyme changeme commfailure commok doreboot doshutdown emergency failing loadlimit powerout onbattery offbattery mainsback remotedown runlimit timeout startselftest endselftest battdetach battattach)
 
+# Escapes "/" and "&" so a value can be safely used as a sed replacement
+# string (as opposed to a search pattern).
+sed_escape() {
+    printf '%s' "$1" | sed -e 's/[\/&]/\\&/g'
+}
+
 NAME=$(jq --raw-output '.name' $CONFIG_PATH)
 CABLE=$(jq --raw-output '.cable' $CONFIG_PATH)
 TYPE=$(jq --raw-output '.type' $CONFIG_PATH)
 DEVICE=$(jq --raw-output '.device' $CONFIG_PATH)
 
 if [[ -n "$NAME" ]]; then
-    sed -i "s/^#\?UPSNAME\( .*\)\?\$/UPSNAME $NAME/g" $UPS_CONFIG_PATH
+    sed -i "s/^#\?UPSNAME\( .*\)\?\$/UPSNAME $(sed_escape "$NAME")/g" $UPS_CONFIG_PATH
 fi
 
 if [[ -n "$CABLE" ]]; then
-    sed -i "s/^#\?UPSCABLE\( .*\)\?\$/UPSCABLE $CABLE/g" $UPS_CONFIG_PATH
+    sed -i "s/^#\?UPSCABLE\( .*\)\?\$/UPSCABLE $(sed_escape "$CABLE")/g" $UPS_CONFIG_PATH
 fi
 
 if [[ -n "$TYPE" ]]; then
-    sed -i "s/^#\?UPSTYPE\( .*\)\?\$/UPSTYPE $TYPE/g" $UPS_CONFIG_PATH
+    sed -i "s/^#\?UPSTYPE\( .*\)\?\$/UPSTYPE $(sed_escape "$TYPE")/g" $UPS_CONFIG_PATH
 fi
 
 if [[ -n "$DEVICE" ]]; then
-    sed -i "s/^#\?DEVICE\( .*\)\?\$/DEVICE $DEVICE/g" $UPS_CONFIG_PATH
+    sed -i "s/^#\?DEVICE\( .*\)\?\$/DEVICE $(sed_escape "$DEVICE")/g" $UPS_CONFIG_PATH
 else
     sed -i "/^#\?DEVICE\( .*\)\?\$/d" $UPS_CONFIG_PATH
 fi
@@ -49,7 +55,7 @@ for key in "${keys[@]}"; do
             # placed inside a sed replacement string, where "/" and "&"
             # are metacharacters. When appended verbatim below (not via
             # sed), the raw, unescaped value is the correct one to write.
-            val_escaped=$(printf '%s' "$val" | sed -e 's/[\/&]/\\&/g')
+            val_escaped=$(sed_escape "$val")
             sed -i "s/^#\?$key\( .*\)\?\$/$key $val_escaped/g" $UPS_CONFIG_PATH
         else
             # add to bottom
