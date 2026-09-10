@@ -13,6 +13,8 @@ init: false
 startup: services
 boot: auto
 hassio_api: true
+# "manager" is required to call the Supervisor host reboot/shutdown
+# endpoints used by the hassio_poweroff/hassio_reboot scripts.
 hassio_role: manager
 map:
 - share:rw

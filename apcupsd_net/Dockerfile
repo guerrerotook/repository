@@ -7,12 +7,12 @@ ENV LANG=C.UTF-8
 # Install apcupsd and the tools used by run.sh and event scripts
 RUN \
     apk add --no-cache \
-        apcupsd=3.14.14-r1 \
-        curl \
-        jq \
-        mailx \
-        msmtp \
-        openssh \
+        apcupsd=3.14.14-r6 \
+        curl=8.14.1-r2 \
+        jq=1.7.1-r0 \
+        mailx=8.1.2_git20220412-r1 \
+        msmtp=1.8.25-r0 \
+        openssh=9.6_p1-r2 \
     \
     && ln -sf /usr/bin/msmtp /usr/sbin/sendmail
 

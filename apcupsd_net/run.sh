@@ -34,12 +34,20 @@ IFS=$'\n'
 keys=($keys)
 
 for key in "${keys[@]}"; do
+    if [[ ! "$key" =~ ^[A-Za-z0-9_]+$ ]]; then
+        echo "Ignoring invalid extra option key: $key" >&2
+        continue
+    fi
+
     val=$(jq --raw-output ".extra[] | select(.key == \"$key\").val" $CONFIG_PATH)
 
     if [ -n "$val" ]; then
+        # Escape sed replacement metacharacters in the value
+        val_escaped=$(printf '%s' "$val" | sed -e 's/[\/&]/\\&/g')
+
         if grep -xq "#\?$key\( .*\)\?" $UPS_CONFIG_PATH; then
             # replace in config
-            sed -i "s/^#\?$key\( .*\)\?\$/$key $val/g" $UPS_CONFIG_PATH
+            sed -i "s/^#\?$key\( .*\)\?\$/$key $val_escaped/g" $UPS_CONFIG_PATH
         else
             # add to bottom
             echo "$key $val" >> $UPS_CONFIG_PATH
