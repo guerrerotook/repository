@@ -30,8 +30,10 @@ else
 fi
 
 keys=$(jq --raw-output '.extra[].key' $CONFIG_PATH)
+OLD_IFS="$IFS"
 IFS=$'\n'
 keys=($keys)
+IFS="$OLD_IFS"
 
 for key in "${keys[@]}"; do
     if [[ ! "$key" =~ ^[A-Za-z0-9_]+$ ]]; then
@@ -42,7 +44,9 @@ for key in "${keys[@]}"; do
     val=$(jq --raw-output ".extra[] | select(.key == \"$key\").val" $CONFIG_PATH)
 
     if [ -n "$val" ]; then
-        # Escape sed replacement metacharacters in the value
+        # Escape sed replacement metacharacters (only needed when the value
+        # is used as a sed replacement string below, not for the plain
+        # append case)
         val_escaped=$(printf '%s' "$val" | sed -e 's/[\/&]/\\&/g')
 
         if grep -xq "#\?$key\( .*\)\?" $UPS_CONFIG_PATH; then
