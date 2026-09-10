@@ -41,7 +41,7 @@ for key in "${keys[@]}"; do
         continue
     fi
 
-    val=$(jq --raw-output ".extra[] | select(.key == \"$key\").val" $CONFIG_PATH | head -n1)
+    val=$(jq --raw-output --arg k "$key" '.extra[] | select(.key == $k).val' $CONFIG_PATH | head -n1)
 
     if [ -n "$val" ]; then
         # Escape sed replacement metacharacters (only needed when the value
