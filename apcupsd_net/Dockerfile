@@ -1,0 +1,30 @@
+ARG BUILD_FROM
+FROM $BUILD_FROM
+
+# Set the locale
+ENV LANG=C.UTF-8
+
+# Install apcupsd and the tools used by run.sh and event scripts
+RUN \
+    apk add --no-cache \
+        apcupsd=3.14.14-r1 \
+        curl \
+        jq \
+        mailx \
+        msmtp \
+        openssh \
+    \
+    && ln -sf /usr/bin/msmtp /usr/sbin/sendmail
+
+# Replace the host power scripts so they call the Supervisor API instead
+RUN rm -f /sbin/poweroff /sbin/reboot
+COPY hassio_poweroff /sbin/poweroff
+COPY hassio_reboot /sbin/reboot
+RUN chmod a+x /sbin/poweroff /sbin/reboot
+
+# Copy add-on run script
+COPY run.sh /
+RUN chmod a+x /run.sh
+
+WORKDIR /data
+CMD [ "/run.sh" ]

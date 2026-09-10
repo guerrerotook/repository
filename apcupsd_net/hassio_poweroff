@@ -1,0 +1,11 @@
+#!/bin/sh
+
+TOKEN=$SUPERVISOR_TOKEN
+if [ "$HASSIO_TOKEN" != "" ]; then
+    TOKEN=$HASSIO_TOKEN
+fi
+
+AUTH_HEADER="Authorization: Bearer"
+
+echo "Telling the Supervisor to power off the host:"
+echo "$(curl -s -X POST -H "$AUTH_HEADER $TOKEN" "http://supervisor/host/shutdown")"

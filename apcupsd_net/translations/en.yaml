@@ -1,0 +1,28 @@
+configuration:
+  name:
+    name: UPS name
+    description: >-
+      The name reported for the UPS. Maps to the `UPSNAME` option in
+      apcupsd.conf.
+  cable:
+    name: Cable type
+    description: >-
+      The type of cable used to connect to the UPS. Maps to the `UPSCABLE`
+      option in apcupsd.conf.
+  type:
+    name: UPS type
+    description: >-
+      The type of UPS being monitored. Maps to the `UPSTYPE` option in
+      apcupsd.conf.
+  device:
+    name: Device
+    description: >-
+      The hostname/port of the network UPS, e.g. `upshost:3551`. Maps to
+      the `DEVICE` option in apcupsd.conf.
+  extra:
+    name: Extra options
+    description: >-
+      Additional key/value pairs to set or override in apcupsd.conf, e.g.
+      `KILLDELAY` or `NISPORT`.
+network:
+  3551/tcp: NIS network information port
