@@ -6,10 +6,11 @@ UPS_CONFIG_PATH=/etc/apcupsd/apcupsd.conf
 
 VALID_SCRIPTS=(annoyme changeme commfailure commok doreboot doshutdown emergency failing loadlimit powerout onbattery offbattery mainsback remotedown runlimit timeout startselftest endselftest battdetach battattach)
 
-# Escapes "/" and "&" so a value can be safely used as a sed replacement
-# string (as opposed to a search pattern).
+# Escapes "\", "/" and "&" so a value can be safely used as a sed
+# replacement string (as opposed to a search pattern), and strips
+# newlines, which would otherwise terminate the sed command.
 sed_escape() {
-    printf '%s' "$1" | sed -e 's/[\/&]/\\&/g'
+    printf '%s' "$1" | tr -d '\n' | sed -e 's/[\\/&]/\\&/g'
 }
 
 NAME=$(jq --raw-output '.name' $CONFIG_PATH)

@@ -32,7 +32,7 @@ schema:
   name: str
   cable: str
   type: str
-  device: str
+  device: str?
   extra:
   - key: str
-    val: str
+    val: str?
