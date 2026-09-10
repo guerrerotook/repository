@@ -29,7 +29,7 @@ else
     sed -i "s/^#\?DEVICE\( .*\)\?\$//g" $UPS_CONFIG_PATH
 fi
 
-keys=$(jq --raw-output '.extra[].key' $CONFIG_PATH)
+keys=$(jq --raw-output '.extra[].key' $CONFIG_PATH | sort -u)
 OLD_IFS="$IFS"
 IFS=$'\n'
 keys=($keys)
@@ -41,7 +41,7 @@ for key in "${keys[@]}"; do
         continue
     fi
 
-    val=$(jq --raw-output ".extra[] | select(.key == \"$key\").val" $CONFIG_PATH)
+    val=$(jq --raw-output ".extra[] | select(.key == \"$key\").val" $CONFIG_PATH | head -n1)
 
     if [ -n "$val" ]; then
         # Escape sed replacement metacharacters (only needed when the value
@@ -58,7 +58,7 @@ for key in "${keys[@]}"; do
         fi
     else
         # remove from config
-        sed -i "s/^#\?$key\( .*\)\?\$//g" $UPS_CONFIG_PATH
+        sed -i "/^#\?$key\( .*\)\?\$/d" $UPS_CONFIG_PATH
     fi
 done
 
